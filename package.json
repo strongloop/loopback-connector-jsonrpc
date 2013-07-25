@@ -1,0 +1,22 @@
+{
+    "name": "loopback-connector-jsonrpc",
+    "version": "0.0.1",
+    "description": "Loopback JSONRPC Connector",
+    "main": "index.js",
+    "scripts": {
+        "test": "./node_modules/.bin/mocha --timeout 30000 test/*test.js"
+    },
+    "dependencies": {
+        "loopback-data": "git+ssh://git@github.com:strongloop/loopback-data.git",
+        "jayson": "latest"
+    },
+    "devDependencies": {
+        "loopback": "git+ssh://git@github.com:strongloop/loopback.git",
+        "should": "latest",
+        "mocha": "latest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/strongloop/loopback-connector-jsonrpc.git"
+    }
+}
