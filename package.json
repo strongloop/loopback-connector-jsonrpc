@@ -1,6 +1,6 @@
 {
   "name": "loopback-connector-jsonrpc",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Loopback JSONRPC Connector",
   "main": "index.js",
   "scripts": {
@@ -12,16 +12,17 @@
   },
   "dependencies": {
     "loopback-datasource-juggler": "git+ssh://git@github.com:strongloop/loopback-datasource-juggler.git",
-    "jayson": "latest"
+    "jayson": "~1.0.11"
   },
   "devDependencies": {
     "loopback": "git+ssh://git@github.com:strongloop/loopback.git",
-    "should": "latest",
-    "mocha": "latest",
-    "blanket": "latest"
+    "should": "~1.2.2",
+    "mocha": "~1.12.1",
+    "blanket": "~1.1.5"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/strongloop/loopback-connector-jsonrpc.git"
-  }
+  },
+  "license": "MIT"
 }
