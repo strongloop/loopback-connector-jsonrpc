@@ -26,7 +26,7 @@ describe('JSON-RPC connector', function () {
         var ds = loopback.createDataSource({
             connector: require("../index"),
             debug: false,
-            baseURL: 'http://localhost:3000',
+            url: 'http://localhost:3000',
             operations: ['add', 'subtract', 'multiply', 'divide']});
 
         model = ds.createModel('dummy');

@@ -23,7 +23,7 @@ uses [jayson](https://github.com/tedeh/jayson) as the client library.
 
 Options to configure the connector:
 
-* baseURL: Base URL to the json-rpc server
+* url: Base URL to the json-rpc server
 * operations: An array of operation names
 
 You can also configure the baseURL as follows.

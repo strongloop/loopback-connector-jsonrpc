@@ -15,7 +15,7 @@ var loopback = require("loopback");
 var ds = loopback.createDataSource({
     connector: require("../index"),
     debug: false,
-    baseURL: 'http://localhost:3000',
+    url: 'http://localhost:3000',
     operations: ['add', 'subtract']});
 
 var model = ds.createModel('dummy');
