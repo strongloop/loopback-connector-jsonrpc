@@ -3,8 +3,8 @@ var jayson = require('jayson');
 var assert = require('assert');
 
 describe('JSON-RPC connector', function () {
-    it('invokes json-rpc services', function () {
-
+    var app, s, model;
+    before(function (done) {
         // create a server
         var server = jayson.server({
             add: function (a, b, callback) {
@@ -12,6 +12,13 @@ describe('JSON-RPC connector', function () {
             },
             subtract: function (a, b, callback) {
                 callback(null, a - b);
+            },
+            divide: function (a, b, callback) {
+                if (b === 0) {
+                    callback('Cannot divide by 0');
+                } else {
+                    callback(null, a / b);
+                }
             }
         });
 
@@ -20,25 +27,55 @@ describe('JSON-RPC connector', function () {
             connector: require("../index"),
             debug: false,
             baseURL: 'http://localhost:3000',
-            operations: ['add', 'subtract']});
+            operations: ['add', 'subtract', 'multiply', 'divide']});
 
-        var model = ds.createModel('dummy');
+        model = ds.createModel('dummy');
 
-        var app = loopback();
+        app = loopback();
 
-        app.use(loopback.rest());
+        app.use(loopback.bodyParser());
         app.use(server.middleware(server));
+        s = app.listen(3000, done);
+    });
 
-        // Bind a http interface to the server and let it listen to localhost:3000
-        var s = app.listen(3000, function () {
+    it('invokes add json-rpc services', function (done) {
 
-            model.add(1, 2, function (err, data) {
-                console.log(err, data);
-                s.close();
-                assert.equal(data, 3);
-                done();
-            });
-
+        model.add(1, 2, function (err, data) {
+            assert.equal(data, 3);
+            done();
         });
+
+    });
+
+    it('invokes subtract json-rpc services', function (done) {
+
+        model.subtract(1, 2, function (err, data) {
+            assert.equal(data, -1);
+            done();
+        });
+
+    });
+
+    it('reports unknown method', function (done) {
+
+        model.multiply(1, 5, function (err, data) {
+            assert.equal(err.code, -32601);
+            assert.equal(err.message, 'Method not found');
+            done();
+        });
+
+    });
+
+    it('reports error response', function (done) {
+
+        model.divide(1, 0, function (err, data) {
+            assert(err.code, -32603);
+            done();
+        });
+
+    });
+
+    after(function (done) {
+        s.close(done);
     });
 });
