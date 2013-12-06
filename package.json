@@ -7,11 +7,14 @@
     "test": "./node_modules/.bin/mocha --timeout 30000 test/*test.js"
   },
   "dependencies": {
-    "loopback-datasource-juggler": "strongloop/loopback-datasource-juggler",
     "jayson": "~1.0.11"
   },
+  "peerDependencies": {
+    "loopback-datasource-juggler": "1.x.x"
+  },
   "devDependencies": {
-    "loopback": "strongloop/loopback",
+    "loopback-datasource-juggler": "1.x.x",
+    "loopback": "1.x.x",
     "should": "~1.3.0",
     "mocha": "~1.13.0"
   },
