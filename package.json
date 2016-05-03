@@ -1,6 +1,6 @@
 {
   "name": "loopback-connector-jsonrpc",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Loopback JSONRPC Connector",
   "main": "index.js",
   "scripts": {
