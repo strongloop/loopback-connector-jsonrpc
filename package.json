@@ -7,7 +7,8 @@
     "test": "./node_modules/.bin/mocha --timeout 30000 test/*test.js"
   },
   "dependencies": {
-    "jayson": "^1.1.2"
+    "jayson": "^1.1.2",
+    "strong-globalize": "^2.6.1"
   },
   "peerDependencies": {
     "loopback-datasource-juggler": "2.x.x"
