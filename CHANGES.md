@@ -1,3 +1,15 @@
+2016-10-14, Version 1.1.0
+=========================
+
+ * Update translation files - round#2 (Candy)
+
+ * Add translated files (gunjpan)
+
+ * Globalize using strong-globalize (gunjpan)
+
+ * Update URLs in CONTRIBUTING.md (#5) (Ryan Graham)
+
+
 2016-05-03, Version 1.0.4
 =========================
 
