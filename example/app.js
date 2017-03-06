@@ -7,21 +7,21 @@ var jayson = require('jayson');
 
 // create a server
 var server = jayson.server({
-    add: function (a, b, callback) {
-        callback(null, a + b);
-    },
-    subtract: function (a, b, callback) {
-        callback(null, a - b);
-    }
+  add: function(a, b, callback) {
+    callback(null, a + b);
+  },
+  subtract: function(a, b, callback) {
+    callback(null, a - b);
+  },
 });
 
-var loopback = require("loopback");
+var loopback = require('loopback');
 
 var ds = loopback.createDataSource({
-    connector: require("../index"),
-    debug: false,
-    url: 'http://localhost:3000',
-    operations: ['add', 'subtract']});
+  connector: require('../index'),
+  debug: false,
+  url: 'http://localhost:3000',
+  operations: ['add', 'subtract'] });
 
 var model = ds.createModel('dummy');
 
@@ -31,11 +31,9 @@ app.use(loopback.rest());
 app.use(server.middleware(server));
 
 // Bind a http interface to the server and let it listen to localhost:3000
-var s = app.listen(3000, function () {
-
-    model.add(1, 2, function(err, data) {
-        console.log(err, data);
-        s.close();
-    });
-
+var s = app.listen(3000, function() {
+  model.add(1, 2, function(err, data) {
+    console.log(err, data);
+    s.close();
+  });
 });
