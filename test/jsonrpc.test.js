@@ -3,9 +3,10 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-var loopback = require('loopback');
-var jayson = require('jayson');
 var assert = require('assert');
+var bodyParser = require('body-parser');
+var jayson = require('jayson');
+var loopback = require('loopback');
 
 describe('JSON-RPC connector', function() {
   var app, s, model;
@@ -39,7 +40,7 @@ describe('JSON-RPC connector', function() {
 
     app = loopback();
 
-    app.use(loopback.bodyParser());
+    app.use(bodyParser());
     app.use(server.middleware(server));
     s = app.listen(3000, done);
   });
