@@ -3,6 +3,8 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
+'use strict';
+
 var assert = require('assert');
 var bodyParser = require('body-parser');
 var jayson = require('jayson');
@@ -11,7 +13,7 @@ var loopback = require('loopback');
 describe('JSON-RPC connector', function() {
   var app, s, model;
   before(function(done) {
-        // create a server
+    // create a server
     var server = jayson.server({
       add: function(a, b, callback) {
         callback(null, a + b);
@@ -27,7 +29,6 @@ describe('JSON-RPC connector', function() {
         }
       },
     });
-
 
     var ds = loopback.createDataSource({
       connector: require('../index'),

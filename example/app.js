@@ -3,6 +3,8 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
+'use strict';
+
 var jayson = require('jayson');
 
 // create a server
@@ -21,7 +23,7 @@ var ds = loopback.createDataSource({
   connector: require('../index'),
   debug: false,
   url: 'http://localhost:3000',
-  operations: ['add', 'subtract'] });
+  operations: ['add', 'subtract']});
 
 var model = ds.createModel('dummy');
 
