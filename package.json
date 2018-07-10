@@ -1,6 +1,6 @@
 {
   "name": "loopback-connector-jsonrpc",
-  "version": "3.0.0-alpha.1",
+  "version": "3.0.0",
   "description": "Loopback JSONRPC Connector",
   "engines": {
     "node": ">=6"

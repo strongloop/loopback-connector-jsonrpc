@@ -1,3 +1,35 @@
+2018-07-10, Version 3.0.0
+=========================
+
+ * chore: drop node + update dependencies (virkt25)
+
+ * [WebFM] cs/pl/ru translation (candytangnb)
+
+ * Add stalebot configuration (Kevin Delisle)
+
+ * Create Issue and PR Templates (#17) (Sakib Hasan)
+
+ * Add CODEOWNER file (Diana Lau)
+
+ * add .travis.yml (Diana Lau)
+
+ * Replicate new issue_template from loopback (Siddhi Pai)
+
+ * Replicate issue_template from loopback repo (Siddhi Pai)
+
+ * Remove unnecessary peer dependencies (Kevin Delisle)
+
+ * Add eslint@2.x to repository and fix lint errors (Kevin Delisle)
+
+ * Update paid support URL (Siddhi Pai)
+
+ * Start 3.x + drop support for Node v0.10/v0.12 (siddhipai)
+
+ * Drop support for Node v0.10 and v0.12 (Siddhi Pai)
+
+ * Start the development of the next major version (Siddhi Pai)
+
+
 2016-10-14, Version 1.1.0
 =========================
 
