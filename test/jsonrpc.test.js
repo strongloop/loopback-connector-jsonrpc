@@ -5,32 +5,32 @@
 
 'use strict';
 
-var assert = require('assert');
-var bodyParser = require('body-parser');
-var jayson = require('jayson');
-var loopback = require('loopback');
+const assert = require('assert');
+const bodyParser = require('body-parser');
+const jayson = require('jayson');
+const loopback = require('loopback');
 
 describe('JSON-RPC connector', function() {
-  var app, s, model;
+  let app, s, model;
   before(function(done) {
     // create a server
-    var server = jayson.server({
-      add: function(a, b, callback) {
-        callback(null, a + b);
+    const server = jayson.server({
+      add: function(args, callback) {
+        callback(null, args[0] + args[1]);
       },
-      subtract: function(a, b, callback) {
-        callback(null, a - b);
+      subtract: function(args, callback) {
+        callback(null, args[0] - args[1]);
       },
-      divide: function(a, b, callback) {
-        if (b === 0) {
+      divide: function(args, callback) {
+        if (args[1] === 0) {
           callback('Cannot divide by 0');
         } else {
-          callback(null, a / b);
+          callback(null, args[0] / args[1]);
         }
       },
     });
 
-    var ds = loopback.createDataSource({
+    const ds = loopback.createDataSource({
       connector: require('../index'),
       debug: false,
       url: 'http://localhost:3000',
@@ -41,7 +41,7 @@ describe('JSON-RPC connector', function() {
 
     app = loopback();
 
-    app.use(bodyParser());
+    app.use(bodyParser.json());
     app.use(server.middleware(server));
     s = app.listen(3000, done);
   });
@@ -56,6 +56,13 @@ describe('JSON-RPC connector', function() {
   it('invokes subtract json-rpc services', function(done) {
     model.subtract(1, 2, function(err, data) {
       assert.equal(data, -1);
+      done();
+    });
+  });
+
+  it('invokes divide json-rpc services', function(done) {
+    model.divide(4, 2, function(err, data) {
+      assert.equal(data, 2);
       done();
     });
   });
