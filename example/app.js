@@ -5,35 +5,35 @@
 
 'use strict';
 
-var jayson = require('jayson');
+const jayson = require('jayson');
 
 // create a server
-var server = jayson.server({
-  add: function(a, b, callback) {
-    callback(null, a + b);
+const server = jayson.server({
+  add: function(args, callback) {
+    callback(null, args[0] + args[1]);
   },
-  subtract: function(a, b, callback) {
-    callback(null, a - b);
+  subtract: function(args, callback) {
+    callback(null, args[0] - args[1]);
   },
 });
 
-var loopback = require('loopback');
+const loopback = require('loopback');
 
-var ds = loopback.createDataSource({
+const ds = loopback.createDataSource({
   connector: require('../index'),
   debug: false,
   url: 'http://localhost:3000',
   operations: ['add', 'subtract']});
 
-var model = ds.createModel('dummy');
+const model = ds.createModel('dummy');
 
-var app = loopback();
+const app = loopback();
 
 app.use(loopback.rest());
 app.use(server.middleware(server));
 
 // Bind a http interface to the server and let it listen to localhost:3000
-var s = app.listen(3000, function() {
+const s = app.listen(3000, function() {
   model.add(1, 2, function(err, data) {
     console.log(err, data);
     s.close();

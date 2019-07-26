@@ -11,15 +11,15 @@
     "test": "./node_modules/.bin/mocha --timeout 30000 test/*test.js"
   },
   "dependencies": {
-    "jayson": "^1.1.2",
-    "strong-globalize": "^4.1.1"
+    "jayson": "^3.0.2",
+    "strong-globalize": "^5.0.0"
   },
   "devDependencies": {
     "body-parser": "^1.17.1",
-    "eslint": "^5.1.0",
-    "eslint-config-loopback": "^10.0.0",
+    "eslint": "^6.1.0",
+    "eslint-config-loopback": "^13.1.0",
     "loopback": "^3.0.0",
-    "mocha": "^5.2.0",
+    "mocha": "^6.2.0",
     "should": "^13.2.1"
   },
   "repository": {
